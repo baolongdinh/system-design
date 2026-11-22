@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- approach-2pc: coordinator controlling two locked databases -->
+  <!-- Coordinator hexagon (plum) -->
+  <polygon points="32,6 44,13 44,25 32,32 20,25 20,13" stroke="#6E4A8E" stroke-width="2" fill="#FBFBF8"/>
+  <circle cx="32" cy="19" r="3" fill="#6E4A8E"/>
+
+  <!-- Connecting coordination lines -->
+  <path d="M24 28 L16 38" stroke="#4B5A75" stroke-width="1.5" stroke-dasharray="2 2"/>
+  <path d="M40 28 L48 38" stroke="#4B5A75" stroke-width="1.5" stroke-dasharray="2 2"/>
+
+  <!-- Left DB cylinder -->
+  <ellipse cx="16" cy="40" rx="10" ry="3.5" stroke="#1C2B4A" stroke-width="1.5" fill="#FBFBF8"/>
+  <path d="M6 40 V54 C6 56 26 56 26 54 V40" stroke="#1C2B4A" stroke-width="1.5" fill="#FBFBF8"/>
+  <ellipse cx="16" cy="54" rx="10" ry="3.5" stroke="#1C2B4A" stroke-width="1.5" fill="none"/>
+
+  <!-- Right DB cylinder -->
+  <ellipse cx="48" cy="40" rx="10" ry="3.5" stroke="#1C2B4A" stroke-width="1.5" fill="#FBFBF8"/>
+  <path d="M38 40 V54 C38 56 58 56 58 54 V40" stroke="#1C2B4A" stroke-width="1.5" fill="#FBFBF8"/>
+  <ellipse cx="48" cy="54" rx="10" ry="3.5" stroke="#1C2B4A" stroke-width="1.5" fill="none"/>
+
+  <!-- Red-orange lock accents on both databases -->
+  <!-- Left lock -->
+  <rect x="12" y="45" width="8" height="6" rx="1" stroke="#C9472B" stroke-width="1.2" fill="#F6DED5"/>
+  <path d="M14 45 V42 C14 40.5 18 40.5 18 42 V45" stroke="#C9472B" stroke-width="1.2" fill="none"/>
+
+  <!-- Right lock -->
+  <rect x="44" y="45" width="8" height="6" rx="1" stroke="#C9472B" stroke-width="1.2" fill="#F6DED5"/>
+  <path d="M46 45 V42 C46 40.5 50 40.5 50 42 V45" stroke="#C9472B" stroke-width="1.2" fill="none"/>
+</svg>

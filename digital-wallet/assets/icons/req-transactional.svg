@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- req-transactional: two atomic blocks linked under one unifying bracket -->
+  <!-- Overhead bracket encompassing both blocks (atomic transaction boundary) -->
+  <path d="M12 20 V14 H32 M52 20 V14 H32 M32 14 V8" stroke="#6E4A8E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Left block (Debit) -->
+  <rect x="8" y="24" width="20" height="24" rx="3" stroke="#1C2B4A" stroke-width="2" fill="#FBFBF8"/>
+  <line x1="12" y1="36" x2="24" y2="36" stroke="#4B5A75" stroke-width="1.5"/>
+
+  <!-- Right block (Credit) -->
+  <rect x="36" y="24" width="20" height="24" rx="3" stroke="#1C2B4A" stroke-width="2" fill="#FBFBF8"/>
+  <line x1="40" y1="36" x2="52" y2="36" stroke="#4B5A75" stroke-width="1.5"/>
+  <line x1="46" y1="30" x2="46" y2="42" stroke="#4B5A75" stroke-width="1.5"/>
+
+  <!-- Atomic link / double-binding bar between blocks -->
+  <rect x="24" y="33" width="16" height="6" rx="2" stroke="#6E4A8E" stroke-width="2" fill="#FBFBF8"/>
+  <line x1="28" y1="36" x2="36" y2="36" stroke="#6E4A8E" stroke-width="2"/>
+
+  <!-- Status indicator: transaction lock / commit mark -->
+  <circle cx="32" cy="8" r="3" fill="#6E4A8E"/>
+</svg>

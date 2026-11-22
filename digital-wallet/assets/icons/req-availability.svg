@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- req-availability: server node with continuous uptime heartbeat pulse -->
+  <!-- Server node chassis -->
+  <rect x="10" y="14" width="44" height="36" rx="4" stroke="#1C2B4A" stroke-width="2" fill="#FBFBF8"/>
+  <!-- Drive bay slots -->
+  <line x1="16" y1="22" x2="48" y2="22" stroke="#4B5A75" stroke-width="1.5"/>
+  <circle cx="16" cy="18" r="1.5" fill="#3F7D5A"/>
+  <circle cx="21" cy="18" r="1.5" fill="#3F7D5A"/>
+  <circle cx="46" cy="18" r="1.5" fill="#1C2B4A"/>
+
+  <!-- Server feet -->
+  <line x1="16" y1="50" x2="16" y2="54" stroke="#1C2B4A" stroke-width="2"/>
+  <line x1="48" y1="50" x2="48" y2="54" stroke="#1C2B4A" stroke-width="2"/>
+
+  <!-- Uptime pulse line (ECG / heartbeat) with ok accent -->
+  <path d="M6 36 H20 L24 28 L29 44 L34 31 L37 36 H58" stroke="#3F7D5A" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>

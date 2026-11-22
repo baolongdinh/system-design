@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- audit: magnifying glass inspecting accounting ledger lines -->
+  <!-- Ledger sheet -->
+  <rect x="8" y="10" width="38" height="46" rx="3" stroke="#1C2B4A" stroke-width="2" fill="#FBFBF8"/>
+  <line x1="14" y1="18" x2="38" y2="18" stroke="#6E4A8E" stroke-width="2"/>
+  <line x1="14" y1="24" x2="36" y2="24" stroke="#4B5A75" stroke-width="1.5"/>
+  <line x1="14" y1="30" x2="32" y2="30" stroke="#4B5A75" stroke-width="1.5"/>
+  <line x1="14" y1="36" x2="34" y2="36" stroke="#4B5A75" stroke-width="1.5"/>
+  <line x1="14" y1="42" x2="28" y2="42" stroke="#4B5A75" stroke-width="1.5"/>
+  <line x1="14" y1="48" x2="38" y2="48" stroke="#4B5A75" stroke-width="1.5"/>
+
+  <!-- Magnifying glass lens focused on transactions -->
+  <circle cx="38" cy="34" r="14" stroke="#1C2B4A" stroke-width="2.5" fill="#FBFBF8" fill-opacity="0.85"/>
+  <!-- Highlight / lens tick -->
+  <path d="M30 28 A10 10 0 0 1 42 26" stroke="#2E7C83" stroke-width="2" stroke-linecap="round"/>
+  <!-- Magnifier handle -->
+  <line x1="48" y1="44" x2="58" y2="54" stroke="#1C2B4A" stroke-width="3" stroke-linecap="round"/>
+  <line x1="48" y1="44" x2="58" y2="54" stroke="#6E4A8E" stroke-width="1.5" stroke-linecap="round"/>
+</svg>

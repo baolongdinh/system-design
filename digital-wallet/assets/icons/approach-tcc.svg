@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- approach-tcc: Try phase branching into Confirm (green) or Cancel (orange-red) -->
+  <!-- Try node (left) -->
+  <rect x="6" y="24" width="18" height="16" rx="3" stroke="#1C2B4A" stroke-width="2" fill="#FBFBF8"/>
+  <text x="15" y="35" font-family="IBM Plex Sans, sans-serif" font-size="8" font-weight="600" fill="#1C2B4A" text-anchor="middle">TRY</text>
+
+  <!-- Forking branches -->
+  <!-- Branch up to Confirm (ok green) -->
+  <path d="M24 30 C32 30 32 16 38 16" stroke="#3F7D5A" stroke-width="2" stroke-linecap="round"/>
+  <polygon points="36,13 42,16 36,19" fill="#3F7D5A"/>
+  <rect x="42" y="8" width="16" height="16" rx="3" stroke="#3F7D5A" stroke-width="2" fill="#DCEBDD"/>
+  <path d="M47 16 L49 18 L53 14" stroke="#3F7D5A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Branch down to Cancel (fail orange-red dashed) -->
+  <path d="M24 34 C32 34 32 48 38 48" stroke="#C9472B" stroke-width="2" stroke-dasharray="3 2" stroke-linecap="round"/>
+  <polygon points="36,45 42,48 36,51" fill="#C9472B"/>
+  <rect x="42" y="40" width="16" height="16" rx="3" stroke="#C9472B" stroke-width="2" fill="#F6DED5"/>
+  <path d="M47 45 L53 51 M53 45 L47 51" stroke="#C9472B" stroke-width="1.8" stroke-linecap="round"/>
+</svg>
