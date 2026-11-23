@@ -1,0 +1,489 @@
+/* Latency in Online Games — stage, chrome, steps, overlays.
+   Engine and layout discipline from the Digital Wallet deck (headline, one figure, numbered steps, quiet footer),
+   restyled to the game-deck style guide: An blue, Binh orange, server ink, magenta only for what is new.
+   Stage: 1600 × 900 logical px, scaled to fit by js/deck.js. */
+/* IBM Plex (SIL OFL), fontsource 5.3.0 subsets: Vietnamese and Latin Extended cover the speaker notes */
+@font-face { font-family: "IBM Plex Mono"; font-weight: 400; font-style: normal; font-display: swap; src: url("../assets/fonts/ibm-plex-mono-vietnamese-400-normal.woff2") format("woff2"); unicode-range: U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB; }
+@font-face { font-family: "IBM Plex Mono"; font-weight: 400; font-style: normal; font-display: swap; src: url("../assets/fonts/ibm-plex-mono-latin-ext-400-normal.woff2") format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family: "IBM Plex Mono"; font-weight: 400; font-style: normal; font-display: swap; src: url("../assets/fonts/ibm-plex-mono-latin-400-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: "IBM Plex Mono"; font-weight: 500; font-style: normal; font-display: swap; src: url("../assets/fonts/ibm-plex-mono-vietnamese-500-normal.woff2") format("woff2"); unicode-range: U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB; }
+@font-face { font-family: "IBM Plex Mono"; font-weight: 500; font-style: normal; font-display: swap; src: url("../assets/fonts/ibm-plex-mono-latin-ext-500-normal.woff2") format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family: "IBM Plex Mono"; font-weight: 500; font-style: normal; font-display: swap; src: url("../assets/fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: "IBM Plex Mono"; font-weight: 600; font-style: normal; font-display: swap; src: url("../assets/fonts/ibm-plex-mono-vietnamese-600-normal.woff2") format("woff2"); unicode-range: U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB; }
+@font-face { font-family: "IBM Plex Mono"; font-weight: 600; font-style: normal; font-display: swap; src: url("../assets/fonts/ibm-plex-mono-latin-ext-600-normal.woff2") format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family: "IBM Plex Mono"; font-weight: 600; font-style: normal; font-display: swap; src: url("../assets/fonts/ibm-plex-mono-latin-600-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: "IBM Plex Mono"; font-weight: 700; font-style: normal; font-display: swap; src: url("../assets/fonts/ibm-plex-mono-vietnamese-700-normal.woff2") format("woff2"); unicode-range: U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB; }
+@font-face { font-family: "IBM Plex Mono"; font-weight: 700; font-style: normal; font-display: swap; src: url("../assets/fonts/ibm-plex-mono-latin-ext-700-normal.woff2") format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family: "IBM Plex Mono"; font-weight: 700; font-style: normal; font-display: swap; src: url("../assets/fonts/ibm-plex-mono-latin-700-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: "IBM Plex Sans"; font-weight: 400; font-style: normal; font-display: swap; src: url("../assets/fonts/ibm-plex-sans-vietnamese-400-normal.woff2") format("woff2"); unicode-range: U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB; }
+@font-face { font-family: "IBM Plex Sans"; font-weight: 400; font-style: normal; font-display: swap; src: url("../assets/fonts/ibm-plex-sans-latin-ext-400-normal.woff2") format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family: "IBM Plex Sans"; font-weight: 400; font-style: normal; font-display: swap; src: url("../assets/fonts/ibm-plex-sans-latin-400-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: "IBM Plex Sans"; font-weight: 400; font-style: italic; font-display: swap; src: url("../assets/fonts/ibm-plex-sans-vietnamese-400-italic.woff2") format("woff2"); unicode-range: U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB; }
+@font-face { font-family: "IBM Plex Sans"; font-weight: 400; font-style: italic; font-display: swap; src: url("../assets/fonts/ibm-plex-sans-latin-ext-400-italic.woff2") format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family: "IBM Plex Sans"; font-weight: 400; font-style: italic; font-display: swap; src: url("../assets/fonts/ibm-plex-sans-latin-400-italic.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: "IBM Plex Sans"; font-weight: 500; font-style: normal; font-display: swap; src: url("../assets/fonts/ibm-plex-sans-vietnamese-500-normal.woff2") format("woff2"); unicode-range: U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB; }
+@font-face { font-family: "IBM Plex Sans"; font-weight: 500; font-style: normal; font-display: swap; src: url("../assets/fonts/ibm-plex-sans-latin-ext-500-normal.woff2") format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family: "IBM Plex Sans"; font-weight: 500; font-style: normal; font-display: swap; src: url("../assets/fonts/ibm-plex-sans-latin-500-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: "IBM Plex Sans"; font-weight: 600; font-style: normal; font-display: swap; src: url("../assets/fonts/ibm-plex-sans-vietnamese-600-normal.woff2") format("woff2"); unicode-range: U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB; }
+@font-face { font-family: "IBM Plex Sans"; font-weight: 600; font-style: normal; font-display: swap; src: url("../assets/fonts/ibm-plex-sans-latin-ext-600-normal.woff2") format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family: "IBM Plex Sans"; font-weight: 600; font-style: normal; font-display: swap; src: url("../assets/fonts/ibm-plex-sans-latin-600-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: "IBM Plex Sans"; font-weight: 700; font-style: normal; font-display: swap; src: url("../assets/fonts/ibm-plex-sans-vietnamese-700-normal.woff2") format("woff2"); unicode-range: U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB; }
+@font-face { font-family: "IBM Plex Sans"; font-weight: 700; font-style: normal; font-display: swap; src: url("../assets/fonts/ibm-plex-sans-latin-ext-700-normal.woff2") format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family: "IBM Plex Sans"; font-weight: 700; font-style: normal; font-display: swap; src: url("../assets/fonts/ibm-plex-sans-latin-700-normal.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+
+:root {
+  --paper: #F8FAFC;
+  --paper-panel: #F1F5F9;
+  --paper-card: #FFFFFF;
+  --ink: #1F2937;
+  --ink-2: #475569;
+  --ink-3: #94A3B8;
+  --line: #CBD5E1;
+  --an: #2563EB;
+  --an-tint: #DBEAFE;
+  --binh: #EA580C;
+  --binh-tint: #FFEDD5;
+  --accent: #DB2777;
+  --ok: #16A34A;
+  --fail: #DC2626;
+  --warn: #D97706;
+  --hero: #0F172A;
+  --highlight: rgba(37, 99, 235, 0.10);
+  --highlight-solid: #1F2937;
+  --cmd: #2563EB;
+
+  --mono: "IBM Plex Mono", Menlo, Consolas, monospace;
+  --sans: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+
+  --desk: #0B1120;
+  --scale: 1;
+  --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --t-step: 300ms;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body {
+  background: var(--desk);
+  color: var(--ink);
+  font-family: var(--sans);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ───────────── stage ───────────── */
+
+.deck { position: fixed; inset: 0; }
+
+.slide {
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 1600px; height: 900px;
+  transform: translate(-50%, -50%) scale(var(--scale));
+  transform-origin: 50% 50%;
+  background: var(--paper);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 320ms var(--ease-out), visibility 0s linear 320ms;
+  overflow: hidden;
+}
+.slide.is-current { opacity: 1; visibility: visible; transition: opacity 320ms var(--ease-out); }
+
+/* ───────────── headline + one line of context ───────────── */
+
+.slide-head {
+  position: absolute;
+  left: 64px; right: 64px;
+  top: 34px;
+}
+.slide.has-score .slide-head { right: 420px; }
+.slide-head h2 {
+  margin: 0;
+  font-weight: 600;
+  font-size: 42px;
+  line-height: 1.14;
+  letter-spacing: -0.014em;
+  color: var(--ink);
+}
+.slide-head .lede {
+  margin: 10px 0 0;
+  font-size: 23px;
+  line-height: 1.3;
+  color: var(--ink-2);
+}
+code, .mono { font-family: var(--mono); }
+code {
+  font-size: 0.9em;
+  padding: 0.04em 0.26em;
+  background: rgba(31, 41, 55, 0.07);
+  border-radius: 3px;
+}
+.est { font: 500 0.8em/1 var(--mono); color: var(--ink-2); border: 1px solid var(--line); border-radius: 4px; padding: 1px 5px; vertical-align: 0.12em; }
+
+/* ───────────── the figure ─────────────
+   default (layout S): 1080 × 640 on the left, step strip on the right
+   .wide   (layout W): 1472 × 640, no strip (or a horizontal strip under a shorter figure) */
+
+.fig {
+  position: absolute;
+  left: 64px; top: 170px;
+  width: 1080px; height: 640px;
+  margin: 0;
+}
+.fig.wide { width: 1472px; }
+.fig > svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.fig.pending {
+  border: 1.5px dashed var(--ink-3);
+  display: grid; place-items: center;
+  color: var(--ink-3);
+  font: 400 18px/1.3 var(--mono);
+}
+.fig.pending::after { content: "diagram pending: " attr(data-svg); }
+
+/* photos placed over a figure's photo slot, or free on the slide */
+.photo { position: absolute; margin: 0; }
+.photo img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 6px; box-shadow: 0 1px 0 rgba(15, 23, 42, 0.08), 0 6px 18px rgba(15, 23, 42, 0.14); }
+.photo figcaption { position: absolute; left: 0; top: calc(100% + 4px); font-size: 15px; color: var(--ink-2); white-space: nowrap; }
+.photo.contain img { object-fit: contain; background: #fff; }
+.photo.bare img { box-shadow: none; border-radius: 0; background: transparent; }
+
+/* ───────────── numbered step strip: right column (default) or a row (.h) ───────────── */
+
+.strip {
+  position: absolute;
+  left: 1176px; width: 360px;
+  top: 170px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.strip li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-size: 23px;
+  line-height: 1.25;
+  color: var(--ink-2);
+  border: 1.5px solid transparent;
+  transition: background-color 280ms var(--ease-out), border-color 280ms var(--ease-out);
+}
+.strip li i {
+  flex: none;
+  width: 34px; height: 34px;
+  margin-top: -2px;
+  border-radius: 50%;
+  background: var(--paper-card);
+  border: 2px solid var(--ink);
+  color: var(--ink);
+  font: 700 18px/30px var(--mono);
+  font-style: normal;
+  text-align: center;
+  transition: background-color 280ms var(--ease-out), color 280ms var(--ease-out);
+}
+.strip li b { color: var(--ink); font-weight: 600; }
+.strip li code { font-size: 0.86em; }
+.strip li.step-current { color: var(--ink); background: var(--paper-card); border-color: var(--line); box-shadow: 0 2px 10px rgba(15, 23, 42, 0.08); }
+.strip li.step-current i { background: var(--ink); color: #fff; }
+.strip li.step-past { color: var(--ink); }
+.strip.h {
+  left: 64px; right: 64px; width: auto;
+  top: auto; bottom: 74px;
+  flex-direction: row;
+  gap: 18px;
+}
+.strip.h li { flex: 1; }
+
+/* ───────────── mini scorecard, top right (slides 5–24) ───────────── */
+
+.score {
+  position: absolute;
+  right: 64px; top: 26px;
+  width: 316px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  font-family: var(--sans);
+}
+.score .h { font-size: 15px; font-weight: 600; color: var(--ink-2); text-align: center; letter-spacing: 0.01em; white-space: nowrap; }
+.score .row { grid-column: 1 / -1; font-size: 15px; color: var(--ink-2); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.score .row b { color: var(--ink); font-weight: 600; }
+.score .c {
+  position: relative;
+  height: 40px;
+  border-radius: 6px;
+  background: var(--paper-panel);
+  border: 1.5px solid var(--line);
+  display: grid; place-items: center;
+  font: 700 24px/1 var(--sans);
+}
+.score .c.v { background: #DCFCE7; border-color: #86EFAC; color: var(--ok); }
+.score .c.x { background: #FEE2E2; border-color: #FCA5A5; color: var(--fail); }
+.score .c.v::after { content: "✓"; }
+.score .c.x::after { content: "✗"; }
+.score .c.flip { box-shadow: 0 0 0 3px var(--accent); }
+/* a cell that flips at step N: the "before" value shows until N, the "after" from N */
+.score .c[data-step] { transition: opacity 300ms var(--ease-out); }
+
+/* ───────────── next-slide hint (inside the footer; X hides it) ───────────── */
+
+.next-hint {
+  flex: none;
+  max-width: 520px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 16px;
+  line-height: 1.2;
+  color: var(--ink-3);
+  white-space: nowrap;
+  pointer-events: none;
+}
+.next-hint b { font-weight: 600; color: var(--ink-3); }
+.next-hint b.go::after { content: " →"; }
+.next-hint .n { font: 600 15px/1 var(--mono); color: var(--ink-3); }
+.next-hint .t { overflow: hidden; text-overflow: ellipsis; }
+body.hide-next .next-hint { display: none; }
+
+/* ───────────── footer: sources/credits left; next, part, number right ───────────── */
+
+.foot {
+  position: absolute;
+  left: 64px; right: 64px;
+  top: 856px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  font-size: 16px;
+  line-height: 1;
+  color: var(--ink-2);
+}
+.foot .src { flex: 1; min-width: 0; display: flex; gap: 18px; white-space: nowrap; overflow: hidden; }
+.foot .src span { overflow: hidden; text-overflow: ellipsis; }
+.foot .src b { font-weight: 600; color: var(--ink-2); }
+.foot .src .credit { color: var(--ink-3); flex: none; }
+.foot .part { flex: none; color: var(--ink-3); }
+.foot .bars { flex: none; display: flex; gap: 5px; }
+.foot .bars i { width: 20px; height: 4px; border-radius: 2px; background: rgba(31, 41, 55, 0.14); }
+.foot .bars i.done { background: var(--ink-3); }
+.foot .bars i.now { background: var(--ink); }
+.foot .num { flex: none; min-width: 30px; text-align: right; font: 600 17px/1 var(--mono); color: var(--ink); }
+.slide.dark .foot, .slide.dark .foot .src b, .slide.dark .foot .num { color: rgba(248, 250, 252, 0.85); }
+.slide.dark .foot .src .credit, .slide.dark .next-hint, .slide.dark .next-hint b, .slide.dark .next-hint .n, .slide.dark .foot .part { color: rgba(248, 250, 252, 0.6); }
+.slide.dark .foot .bars i { background: rgba(248, 250, 252, 0.2); }
+.slide.dark .foot .bars i.done { background: rgba(248, 250, 252, 0.55); }
+.slide.dark .foot .bars i.now { background: #fff; }
+
+/* ───────────── tables (slides 5, 10, 12) ───────────── */
+
+.tbl {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--paper-card);
+  font-size: 21px;
+  line-height: 1.28;
+}
+.tbl th, .tbl td {
+  padding: 10px 14px;
+  border: 1px solid rgba(28, 43, 74, 0.26);
+  text-align: left;
+  vertical-align: top;
+}
+.tbl thead th {
+  background: var(--ink);
+  color: var(--paper-card);
+  font-weight: 600;
+  border-color: var(--ink);
+}
+.tbl tbody th { font-weight: 600; background: var(--paper-panel); white-space: nowrap; }
+.tbl td.code, .tbl .code { font-family: var(--mono); font-size: 0.92em; }
+.tbl caption { caption-side: top; text-align: left; padding: 0 0 10px; font-weight: 600; font-size: 22px; color: var(--ink); }
+.tbl .bad { color: var(--fail); }
+
+/* ───────────── steps ─────────────
+   data-step="N"   hidden until step N, then fades and rises in
+   data-step-only  visible only at the listed steps
+   data-hl="N"     always visible, highlighted while N is the current step
+   data-dim="N"    fades back from step N on */
+
+[data-step] {
+  transition: opacity var(--t-step) var(--ease-out), transform var(--t-step) var(--ease-out), filter 320ms ease, visibility 0s;
+}
+.mode-reveal [data-step].step-future {
+  opacity: 0 !important;
+  visibility: hidden;
+  transition: opacity 140ms ease, transform 140ms ease, filter 140ms ease, visibility 0s linear 140ms;
+}
+.mode-reveal [data-step]:not(svg *).step-future { transform: translateY(8px); }
+.mode-reveal svg g.step:not([transform]).step-future,
+.mode-reveal svg g[data-step]:not([transform]).step-future { transform: translateY(6px); }
+.mode-focus [data-step].step-future { opacity: 0.12; }
+.mode-focus [data-step].step-past { opacity: 0.6; }
+
+.step-only-off { display: none !important; }
+@keyframes only-in { from { opacity: 0; } to { opacity: 1; } }
+[data-step-only]:not(.step-only-off) { animation: only-in 320ms var(--ease-out) both; }
+
+[data-dim] { transition: opacity 400ms var(--ease-out); }
+[data-dim].dimmed { opacity: 0.4; }
+
+/* the current step's group in a diagram gets a soft highlighter glow; its badge turns ink */
+svg g.step.step-current { filter: drop-shadow(0 0 4px rgba(37, 99, 235, 0.35)); }
+svg g.step .badge circle, svg g.step circle.badge, svg g.step .badge text, svg g.step text.badge { transition: fill 300ms ease; }
+svg g.step.step-current .badge circle, svg g.step.step-current circle.badge { fill: var(--ink); }
+svg g.step.step-current .badge text, svg g.step.step-current text.badge { fill: #fff; }
+svg g.step.step-current .badge text, svg g.step.step-current text.badge { fill: var(--paper-card); }
+svg .hl { opacity: 0; transition: opacity 300ms var(--ease-out); }
+svg [data-hl].step-current .hl { opacity: 1; }
+.hl-target, .tbl tr { transition: box-shadow 260ms, background-color 260ms; }
+.hl-target.step-current { box-shadow: 0 0 0 3px var(--an); }
+.tbl tr.step-current td, .tbl tr.step-current th { background: rgba(37, 99, 235, 0.10); }
+
+/* ───────────── controls (outside the stage, not scaled) ───────────── */
+
+.controls {
+  position: fixed;
+  right: 14px; bottom: 12px;
+  display: flex; align-items: center; gap: 6px;
+  padding: 5px;
+  background: rgba(20, 23, 29, 0.74);
+  border-radius: 8px;
+  z-index: 20;
+  opacity: 0;
+  transition: opacity 240ms;
+}
+.controls:hover, .controls:focus-within, body.pointer-active .controls { opacity: 1; }
+.controls button {
+  min-width: 36px; height: 34px;
+  padding: 0 10px;
+  border: 0; border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #E9ECF2;
+  font: 500 14px/1 var(--sans);
+  cursor: pointer;
+}
+.controls button:hover { background: rgba(255, 255, 255, 0.2); }
+.controls button:focus-visible { outline: 2px solid var(--highlight-solid); outline-offset: 1px; }
+.controls .counter { min-width: 92px; font: 600 14px/1 var(--mono); }
+
+.deck-toast {
+  position: fixed; left: 50%; bottom: 64px; z-index: 35;
+  transform: translate(-50%, 8px);
+  padding: 9px 16px;
+  border-radius: 6px;
+  background: rgba(20, 23, 29, 0.88);
+  color: #E9ECF2;
+  font: 500 15px/1.3 var(--sans);
+  opacity: 0; pointer-events: none;
+  transition: opacity 220ms ease, transform 220ms var(--ease-out);
+}
+.deck-toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+/* ───────────── overlays ───────────── */
+
+.overlay {
+  position: fixed; z-index: 30;
+  background: rgba(251, 251, 248, 0.97);
+  color: var(--ink);
+  border: 1px solid rgba(28, 43, 74, 0.3);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+  display: none;
+}
+.overlay.open { display: block; }
+.notes-panel {
+  left: 50%; bottom: 60px;
+  transform: translateX(-50%);
+  width: min(1100px, calc(100vw - 40px));
+  max-height: 48vh; overflow: auto;
+  padding: 16px 24px 20px;
+  font-size: 17.5px; line-height: 1.6;
+}
+.notes-panel .cue { color: var(--ink-3); font-style: italic; }
+.notes-panel .step-cue { margin: 6px 0; padding: 4px 10px; border-left: 3px solid var(--an); background: rgba(37, 99, 235, 0.07); }
+.notes-panel .handoff { margin-top: 12px; padding: 8px 12px; border-left: 3px solid var(--ink); background: var(--paper-panel); }
+.notes-panel ul, .notes-panel ol { margin: 4px 0 8px; padding-left: 24px; }
+.notes-panel h3 { margin: 0 0 6px; font: 600 15px/1.2 var(--sans); color: var(--ink-2); }
+.notes-panel p { margin: 0 0 8px; }
+
+.toc-panel { inset: 40px; overflow: auto; padding: 24px 32px; }
+.toc-panel h3 { margin: 0 0 14px; font: 600 20px/1.2 var(--sans); }
+.toc-panel ol { margin: 0; padding: 0; list-style: none; columns: 2; column-gap: 40px; }
+.toc-panel li { break-inside: avoid; }
+.toc-panel a { display: grid; grid-template-columns: 40px 1fr; padding: 7px 8px; color: var(--ink); text-decoration: none; font-size: 17px; border-radius: 4px; }
+.toc-panel a span { font-family: var(--mono); color: var(--ink-3); }
+.toc-panel a:hover, .toc-panel a.cur { background: var(--highlight); }
+.toc-panel .toc-part { margin: 14px 0 4px; font-size: 15px; font-weight: 600; color: var(--ink-2); break-after: avoid; }
+
+.help-panel { left: 50%; top: 50%; transform: translate(-50%, -50%); width: 600px; padding: 22px 28px; font-size: 16px; }
+.help-panel h3 { margin: 0 0 12px; font: 600 18px/1.2 var(--sans); }
+.help-panel .help-note { margin: -4px 0 12px; color: var(--ink-2); font-size: 15px; }
+.help-panel dl { display: grid; grid-template-columns: 150px 1fr; gap: 6px 14px; margin: 0; }
+.help-panel dt { font-family: var(--mono); font-weight: 600; }
+.help-panel dd { margin: 0; color: var(--ink-2); }
+.blank { inset: 0; background: #000; border: 0; z-index: 40; }
+
+.notes { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .slide, [data-step], [data-dim], svg .hl, .strip li i { transition: none !important; }
+  [data-step-only]:not(.step-only-off) { animation: none; }
+  .mode-reveal [data-step].step-future { transform: none !important; }
+}
+
+/* export panel (PDF button / key E) */
+.export-panel { left: 50%; top: 50%; transform: translate(-50%, -50%); width: 560px; padding: 22px 28px; font-size: 16px; }
+.export-panel h3 { margin: 0 0 12px; font: 600 18px/1.2 var(--sans); }
+.export-panel .help-note { margin: -4px 0 16px; color: var(--ink-2); font-size: 15px; }
+.export-choices { display: grid; gap: 10px; }
+.export-choices button {
+  display: grid; gap: 2px; text-align: left; padding: 12px 16px; cursor: pointer;
+  border: 1px solid var(--ink-3); border-radius: 6px; background: var(--paper-card); color: var(--ink);
+  font: 400 15px/1.35 var(--sans);
+}
+.export-choices button b { font-weight: 600; font-size: 17px; }
+.export-choices button span { color: var(--ink-2); }
+.export-choices button:hover { background: var(--highlight); }
+.export-choices button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+/* speaker-notes pages, created only while the deck is laid out for print */
+.print-notes { display: none; }
+
+@media print {
+  @page { size: 1600px 900px; margin: 0; }
+  html, body { height: auto; overflow: visible; background: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .deck { position: static; }
+  .slide {
+    position: relative; left: 0; top: 0; transform: none !important;
+    opacity: 1 !important; visibility: visible !important; transition: none !important;
+    break-after: page; page-break-after: always;
+  }
+  .controls, .overlay, .next-hint, .deck-toast, .keys { display: none !important; }
+  [data-step], [data-step-only], [data-dim], svg .hl, .strip li i { transition: none !important; animation: none !important; }
+  .mode-reveal [data-step].step-future { transform: none !important; }
+  svg g.step.step-current { filter: none; }
+
+  .print-notes {
+    display: block; width: 1600px; min-height: 900px; padding: 56px 96px 64px;
+    background: #fff; color: var(--ink); font: 400 22px/1.6 var(--sans);
+    break-after: page; page-break-after: always;
+  }
+  .print-notes header { display: flex; align-items: baseline; gap: 18px; padding-bottom: 14px; margin-bottom: 22px; border-bottom: 2px solid var(--ink); }
+  .print-notes header .n { font: 600 24px/1 var(--mono); color: var(--ink-3); }
+  .print-notes header h3 { margin: 0; font: 600 34px/1.2 var(--sans); }
+  .print-notes .body p { margin: 0 0 12px; }
+  .print-notes .body ul, .print-notes .body ol { margin: 4px 0 12px; padding-left: 30px; }
+  .print-notes .body p, .print-notes .body li { break-inside: avoid; }
+  .print-notes .cue { color: var(--ink-3); font-style: italic; }
+  .print-notes .step-cue { padding: 6px 14px; border-left: 5px solid var(--cmd, #3E5C9A); background: rgba(62, 92, 154, 0.07); }
+  .print-notes .handoff { margin-top: 16px; padding: 10px 14px; border-left: 5px solid var(--ink); background: #EEF0EA; }
+  .print-notes code { font-family: var(--mono); font-size: 0.92em; }
+}
+
+/* a wide figure that shares the slide with a horizontal step strip: scaled into 1472 × 560 */
+.fig.wide.with-strip { top: 160px; height: 560px; }

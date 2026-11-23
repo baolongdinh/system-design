@@ -8,6 +8,8 @@ mở `index.html` của topic đó bằng trình duyệt là trình chiếu đư
 | Topic | Thư mục | Nội dung |
 |---|---|---|
 | Digital Wallet at Scale | [`digital-wallet/`](digital-wallet/) | 23 slide: 2PC, TC/C, Saga, event sourcing, CQRS, Raft, partition — theo một giao dịch A chuyển cho C $1 |
+| Latency in Online Games | [`online-game-latency/`](online-game-latency/) | 24 slide + phụ lục: prediction, reconciliation, interpolation, lag compensation, ngân sách độ trễ, tick, region — theo một phát bắn của An vào Bình |
+| Scaling an Online Game to 1M CCU | [`online-game-scale-1m-ccu/`](online-game-scale-1m-ccu/) | 40 slide: ~500 → 10K → 100K → 1M CCU; match fleet, matchmaker, gateway, shard, login queue, pub/sub, region — theo buổi tối của Bình |
 
 ## Cấu trúc một topic
 

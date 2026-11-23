@@ -1,0 +1,155 @@
+/* Slide-specific layouts for Deck 2 (positions follow the report's 1920×1080 frame). */
+
+.kicker {
+  margin: 0 0 12px;
+  font: 600 22px/1 var(--sans);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--binh);
+}
+.slide-head .kicker + h2 { margin-top: 0; }
+
+/* slide 1: big number, plan vs actual bars, two photos */
+.bignum { position: absolute; left: 80px; top: 250px; display: flex; align-items: baseline; gap: 28px; font: 600 120px/1 var(--sans); letter-spacing: -0.02em; color: var(--ink); }
+.bignum .from { color: var(--ink-3); }
+.bignum .to { color: var(--binh); }
+.bignum small { font-size: 34px; font-weight: 600; color: var(--ink-2); letter-spacing: 0; }
+.bars50 { position: absolute; left: 80px; top: 430px; width: 860px; display: grid; grid-template-columns: 150px 1fr; gap: 12px 18px; align-items: center; font-size: 24px; }
+.bars50 b { font-weight: 600; }
+.bars50 .bar { height: 30px; border-radius: 4px; background: var(--ink); }
+.bars50 .bar.plan { width: 1.6%; min-width: 14px; }
+.bars50 .bar.actual { width: 80%; background: var(--fail); }
+.bars50 .tag { grid-column: 2; font-size: 18px; color: var(--ink-3); }
+.photo-pair { position: absolute; top: 250px; display: flex; gap: 20px; }
+.photo-pair .photo { width: 420px; }
+.photo-pair .photo img { height: 236px; }
+
+/* slide 2 */
+.binh-portrait { left: 80px; top: 250px; width: 560px; }
+.binh-portrait img { height: 690px; object-fit: contain; background: #E5E7EB; }
+
+/* slide 3: photo slot inside the Riot card (svg frame s03-photo-slot at (820,60) 720×240) */
+.riot-slot { left: 902px; top: 312px; width: 716px; height: 236px; border-radius: 6px; overflow: hidden; background: #fff; }
+.riot-slot img { width: 100%; height: 100%; object-fit: contain; display: block; }
+
+/* side panels: two verdict cards (slide 6) */
+.verdict { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+.verdict li { display: grid; grid-template-columns: 44px 1fr; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 10px; border: 2px solid var(--ink); background: var(--card); font-size: 24px; line-height: 1.25; }
+.verdict li .g { font: 700 30px/1 var(--sans); text-align: center; }
+.verdict li.ok .g { color: var(--ok); }
+.verdict li.bad .g { color: var(--fail); }
+.verdict li i { font-style: normal; color: var(--ink-3); font: 600 20px/1 var(--mono); }
+
+/* small inline charts in the side column */
+.sidechart { display: block; width: 480px; height: auto; overflow: visible; }
+
+.gopher { position: absolute; width: 120px; height: auto; }
+
+.photo-row { display: flex; gap: 16px; }
+.photo-row .photo { flex: 1; min-width: 0; }
+.photo-row .photo img { height: 132px; }
+
+/* slide 20: map inset with region dots */
+.mapbox { position: relative; width: 480px; height: 360px; border-radius: 6px; overflow: hidden; box-shadow: 0 2px 10px rgba(15, 23, 42, 0.18); }
+.mapbox img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.mapbox .pin { position: absolute; display: flex; align-items: center; gap: 6px; transform: translate(-11px, -11px); font: 700 20px/1 var(--sans); color: #fff; text-shadow: 0 1px 3px #000; }
+.mapbox .pin::before { content: ""; width: 22px; height: 22px; border-radius: 50%; background: var(--binh); border: 3px solid #fff; box-sizing: border-box; }
+.mapbox .pin.sg::before { background: var(--accent); }
+
+/* slide 25: dark hero */
+.hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+.hero-bg::after { content: ""; position: absolute; inset: 0; background: rgba(15, 23, 42, 0.65); }
+.slide.dark .fig { z-index: 1; }
+.slide.dark .slide-head { z-index: 1; }
+
+/* appendix */
+.tbl.cap { font-size: 22px; }
+.tbl.cap td, .tbl.cap th { padding: 8px 12px; }
+.tbl.cap thead th { text-align: right; }
+.tbl.cap thead th:first-child, .tbl.cap thead th:nth-child(2) { text-align: left; }
+.tbl.cap td.in { color: var(--accent); font-style: italic; }
+.types { position: absolute; left: 80px; top: 250px; width: 1760px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.types .col { display: flex; flex-direction: column; gap: 14px; }
+.types .photo img { height: 300px; }
+.types h3 { margin: 0; font: 600 30px/1.2 var(--sans); }
+.types h3 span { display: block; margin-top: 6px; font-size: 24px; font-weight: 400; color: var(--ink-2); }
+.types .eve { width: 60%; }
+.types .eve img { height: 150px; }
+
+/* cover credit box (same title-block as Deck 1 and the Digital Wallet cover, light version) */
+.title-block { position: absolute; left: 80px; top: 548px; margin: 0; display: grid; grid-template-columns: auto auto; border: 1px solid var(--grid); border-radius: 8px; background: var(--card); }
+.tb-cell { padding: 10px 22px 12px; }
+.tb-cell + .tb-cell { border-left: 1px solid var(--grid); }
+.tb-cell dt { margin: 0 0 4px; font-size: 16px; font-weight: 500; color: #64748B; }
+.tb-cell dd { margin: 0; font: 600 24px/1.2 var(--mono); color: var(--ink); }
+
+/* ───────────── v2 additions ───────────── */
+
+/* cover (dark, hero image) */
+.slide.cover .hero-bg { background-position: right center; }
+.slide.cover .hero-bg::after { background: linear-gradient(90deg, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.6) 45%, rgba(15, 23, 42, 0) 70%); }
+.cover-text { position: absolute; left: 120px; top: 230px; width: 980px; z-index: 1; color: #F8FAFC; }
+.cover-text .kicker { color: #FDBA74; }
+.cover-text h1 { margin: 0; font: 600 96px/1.04 var(--sans); letter-spacing: -0.02em; }
+.cover-text .sub { margin: 28px 0 0; font-size: 34px; line-height: 1.3; color: #CBD5E1; }
+.cover-text .path { display: flex; gap: 14px; margin: 44px 0 0; padding: 0; list-style: none; }
+.cover-text .path li { padding: 10px 18px; border: 1.5px solid #475569; border-radius: 999px; font: 600 26px/1 var(--mono); color: #E2E8F0; }
+.cover-text .title-block { position: static; margin-top: 56px; background: rgba(15, 23, 42, 0.6); border-color: #475569; width: max-content; }
+.cover-text .tb-cell + .tb-cell { border-left-color: #475569; }
+.cover-text .tb-cell dt { color: #94A3B8; }
+.cover-text .tb-cell dd { color: #F8FAFC; }
+
+/* milestone divider: big number + one line + the goal grid with the current row highlighted */
+.divider-num { position: absolute; left: 80px; top: 300px; width: 640px; }
+.divider-num b { display: block; font: 600 150px/1 var(--sans); letter-spacing: -0.03em; color: var(--ink); }
+.divider-num b small { font-size: 56px; color: var(--ink-2); letter-spacing: 0; }
+.divider-num p { margin: 26px 0 0; font-size: 34px; line-height: 1.3; color: var(--ink-2); }
+.divider-num p strong { color: var(--ink); }
+.divider .scoregrid { position: absolute; left: 760px; top: 280px; width: 1080px; }
+
+/* s04: grid + tensions */
+.s04-grid { position: absolute; left: 160px; top: 250px; width: 1600px; }
+.tensions { position: absolute; left: 160px; top: 830px; width: 1600px; display: flex; gap: 24px; margin: 0; padding: 0; list-style: none; }
+.tensions li { flex: 1; padding: 14px 18px; border: 2px dashed var(--grid); border-radius: 12px; font-size: 26px; color: var(--ink-2); }
+.tensions li b { color: var(--ink); }
+
+/* s01 hook */
+.hook-left { position: absolute; left: 80px; top: 230px; width: 860px; }
+.hook-left .big { font: 700 170px/0.95 var(--sans); letter-spacing: -0.03em; color: var(--ink); }
+.hook-left .big small { font-size: 44px; font-weight: 600; color: var(--ink-2); letter-spacing: 0; }
+.hook-left .bars50 { position: static; margin-top: 18px; width: 860px; }
+.hook-right { position: absolute; left: 1000px; top: 230px; width: 840px; display: flex; gap: 20px; }
+.hook-right .photo { width: 410px; }
+.hook-right .photo img { height: 230px; }
+.hook-right .stat { margin: 8px 0 0; font-size: 24px; line-height: 1.3; color: var(--ink); }
+.hook-right .stat b { font-size: 30px; }
+
+/* right-column helpers */
+.sidefig { margin: 0; width: 480px; }
+.sidefig > svg { display: block; width: 100%; height: auto; overflow: visible; }
+.side .photo img.tall { max-height: 320px; object-fit: cover; object-position: top; }
+.kv { margin: 0; border: 2px solid var(--ink); border-radius: 10px; overflow: hidden; font: 500 24px/1.4 var(--mono); }
+.kv div { display: grid; grid-template-columns: 1fr auto; padding: 6px 16px; border-top: 1px solid var(--grid); }
+.kv div:first-child { border-top: 0; background: var(--ink); color: #F8FAFC; font: 600 20px/1.6 var(--sans); }
+.kv .me { background: #FFF1E8; color: var(--binh); font-weight: 700; }
+.kv-note { margin: 6px 0 0; font-size: 20px; color: var(--ink-2); }
+.calc { margin: 0; padding: 16px 18px; border: 2px solid var(--ink); border-radius: 10px; background: var(--card); font-size: 24px; line-height: 1.45; }
+.calc .m { font-family: var(--mono); font-size: 23px; }
+.calc small { display: block; margin-top: 6px; font-size: 18px; color: #64748B; }
+.note-chip { margin: 0; padding: 12px 16px; border: 2px dashed var(--grid); border-radius: 10px; font-size: 22px; line-height: 1.35; color: var(--ink-2); }
+.note-chip b { color: var(--ink); }
+
+/* finale */
+.finale-table { position: absolute; left: 80px; top: 240px; width: 900px; z-index: 1; }
+.finale-table .tbl { background: rgba(15, 23, 42, 0.86); color: #F8FAFC; font-size: 25px; }
+.finale-table .tbl th, .finale-table .tbl td { border-color: #334155; padding: 14px 16px; }
+.finale-table .tbl thead th { background: #1E293B; border-color: #334155; }
+.finale-table .tbl tbody th { background: #1E293B; color: #F8FAFC; }
+.finale-table .tbl tr.step-current td, .finale-table .tbl tr.step-current th { background: rgba(219, 39, 119, 0.25); }
+.dark .finale-grid { position: absolute; left: 1020px; top: 240px; width: 820px; z-index: 1; }
+.dark .finale-grid .sg-h b { font-size: 24px; }
+.dark .finale-grid .sg-h small { font-size: 18px; }
+.backlink { color: #64748B; font-weight: 500; letter-spacing: 0; text-transform: none; }
+
+/* finale: dots background, lighter scrim than a photo needs */
+#s25 .hero-bg::after { background: rgba(15, 23, 42, 0.55); }
